@@ -1,4 +1,4 @@
-import {IsString} from "class-validator";
+import {IsOptional, IsString, IsUrl} from "class-validator";
 
 export class NewsCreateDto{
     @IsString({
@@ -17,4 +17,18 @@ export class NewsCreateDto{
     imgUrl: string;
 }
 
-export type TNewsUpdateDto = Partial<NewsCreateDto>;
+export class NewsUpdateDto {
+    @IsString()
+    @IsOptional()
+    title?: string;
+
+    @IsString()
+    @IsOptional()
+    description?: string;
+
+    @IsString()
+    @IsOptional()
+    @IsUrl()
+    imgUrl?: string;
+}
+
